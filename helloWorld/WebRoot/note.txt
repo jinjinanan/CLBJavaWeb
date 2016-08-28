@@ -1,0 +1,3 @@
+如何映射任意目录下的Web应用
+	配置VirtualPath.xml的时候访问名是这个xml的文件名，而不是.xml里的path参数。docBase参数是web应用的物理地址。
+	http://localhost:8080/virtualPath/index.jsp
