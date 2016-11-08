@@ -1,0 +1,69 @@
+/hello ----->  http://localhost:8080/helloServlet/clba 
+/ 表示当前web应用的根目录 http://localhost:8080/helloServlet/
+
+
+servlet 容器：运行servlet,JSP,Filter 等软件环境
+1), servlet容器创建servlet 并且调用servlet相关的生命周期方法
+2), JSP,filter, Listener,tag...
+
+servlet生命周期的方法
+1), 构造器：只被调用一次，只有第一次请求的servlet时，创建servlet的实例，调用构造器 。说明servlet是单实例的。
+2），init方法，只被调用一次，在创建好后立即调用。用于初始化servlet方法。
+3），service：被多次调用，每次调用都会调用service方法。实际用于相应请求。
+4），destroy：只被调用一次，在当前servlet所在的web应用被卸载前调用，用于释放当前servlet所占用的资源。
+
+5.
+在当前web应用被加载之前创建servlet实例
+<load-on-startup></load-on-startup>
+配置在节点中。
+指定servlet创建的时机，若为负数，第一次请求的时候创建，若为0或为证书，则在当前web应用被servlet容器加载时创建，切数越小月早被
+创建
+
+6.关于servlvet-mapping
+同一个servlet可以被映射到多个url上
+可以使用通配符*	使用通配符只用两种形式*.html(*.扩展名), /*(/*结尾)
+<context-param>是配置当前web应用的参数。<init-param>是配置servlet的参数
+
+7.ServletConfig对象的方法
+getServletConfig 封装了servlet配置信息，并且可以获得servlet对象
+getServletContext 获取servletcontext对象
+
+8.servletContext对象
+getRealPath获取当前web应用的某个文件在服务器上部署的绝对路径
+获取当前web应用的某一个文件对应的输入流
+getResourceAsStream() path是当前web应用的路径，不是部署前的路径
+
+http协议，用于定义web浏览器与web服务器交换数据的过程已经数据的格式
+请求消息的结构：
+	一个请求行，若干消息头，实体内容。其中一切消息头和实体内容是可选的。消息头和实体只想要用空行隔开
+相应信息的结构：
+	一个状态行，若干消息头，实体内容。其中一些消息头和实体内容是可选的。消息头和实体只想要用空行隔开
+9 get&post
+get	
+	1.超链接
+	2.在浏览器中输入url。
+	3.网页中form使用get
+	4.使用get一般在1kb一下
+post
+	1.向web服务器提交form数据的时候 设置为post的时候
+	2.将各个表单字段元素机器数据，作为http消息内容的实体发送给web服务器。数据量较大
+
+10.
+	1). servlet的service()方法用于应答请求，因为每次请求都会调用该方法
+	2).	两个参数。
+		ServeletRequest：封装了请求信息
+		ServletResponse:封装了相应信息
+		这两个接口的实现类都是服务器给予实现，并在服务器调用service方式时传入
+	servletrequest:
+		获取请求参数。
+		getParameter
+	3).获取请求的url
+	4).获取请求的方式
+	
+	rervletResponse：封装了相应信息
+	设置响应的内容类型：setContentType()
+	设置响应流
+	设置响应内容：getWriter()：返回PrintWriter对象，调用该对象print()方法，将把print()方法中的参数直接打印到 客户的浏览器上。
+	httpRevlestResponse：
+	设置重定向 sendRedirect()
+	

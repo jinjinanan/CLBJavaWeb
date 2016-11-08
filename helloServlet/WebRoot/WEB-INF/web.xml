@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app>
+	<!-- 配置和映射servlet -->	
+	<servlet>
+		<servlet-name>helloServlet</servlet-name>
+		<servlet-class>com.clb.helloServlet</servlet-class>
+		
+		<!-- 配置servlet的初始化参数 -->
+		<init-param>
+			<param-name>user</param-name>
+			<param-value>clb</param-value>
+		</init-param>
+		<init-param>
+			<param-name>password</param-name>
+			<param-value>clp</param-value>
+		</init-param>
+		
+		<!--配置servlet的创建时机  -->
+		<load-on-startup>0</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>helloServlet</servlet-name>
+		<url-pattern>/clba</url-pattern>
+	</servlet-mapping>
+	
+		
+	<!-- 配置当前web应用的参数 -->
+	<context-param>
+		<param-name>webuser</param-name>
+		<param-value>clb</param-value>
+	</context-param>
+	<context-param>
+		<param-name>webpassword</param-name>
+		<param-value>123</param-value>
+	</context-param>
+	
+	
+		<!-- loginin -->
+	<servlet>
+		<servlet-name>login</servlet-name>
+		<servlet-class>com.clb.loginServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>login</servlet-name>
+		<url-pattern>/loginServlet</url-pattern>
+	</servlet-mapping>
+</web-app>
+<!-- web-app 和webapp-app的区别， -->
